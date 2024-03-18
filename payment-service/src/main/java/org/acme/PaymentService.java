@@ -26,7 +26,7 @@ public class PaymentService {
             Invoice invoice = new Invoice();
             invoice.setCardNumber(cardNumber);
             invoice.setValue(value);
-            invoice.setPaid(true);
+            invoice.setPaid(false);
             System.out.println("Retornando para o Checkout\n");
             return invoice;
     }
