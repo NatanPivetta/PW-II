@@ -14,7 +14,7 @@ import javax.annotation.processing.Generated;
 
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import main.java.org.acme.Book;
+import org.acme.Book;
 
 
 
