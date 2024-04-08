@@ -6,6 +6,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -21,7 +22,8 @@ import org.acme.Book;
 @Path("/bookshare")
 public class BookShare {
 
-    private Set<Book> books;
+    private List<Book> books = new ArrayList<>();
+
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
@@ -30,18 +32,24 @@ public class BookShare {
     }
 
     @POST
-    @Path("/add-book")
+    @Path("/add")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public void add(Book book){
+    @Produces(MediaType.APPLICATION_JSON)
+   
+    public Book add(
+    @FormParam("name") String name,
+    @FormParam("status") boolean status ){
+        Book book = new Book(name, status);
         books.add(book);
-        
+        return book;
     }
 
     @GET
     @Path("/books")
     @Produces(MediaType.APPLICATION_JSON)
-    public Set<Book> lista(){
-        return books;
+    public List<Book> lista(){
+      
+        return this.books;
     }
 
 }
